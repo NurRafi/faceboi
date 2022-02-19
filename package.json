@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/NurRafi/faceboi/issues"
   },
-  "homepage": "https://github.com/NurRafi/faceboi#readme"
+  "homepage": "https://github.com/NurRafi/faceboi#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "helmet": "^5.0.2",
+    "mongoose": "^6.2.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  }
 }
