@@ -14,6 +14,7 @@ const userRoute = require("./routes/user"); // To use users
 dotenv.config(); // We need this and .env file for secrets
 
 // Connect with MongoDB
+// Note: Add connection error handling
 mongoose.connect(process.env.MONGO_URL).then((value) => {
     console.log("Connected to MongoDB server on Cloud Atlas.");
     console.log(value);
@@ -44,7 +45,7 @@ app.get("/", (req, res) => {
 app.get("/users", (req, res) => {
     res.send("Welcome to users!");
 });
- */
+*/
 
 // Running Express server on port 1111 with console logging through the callback (lambda) function
 app.listen(1111, () => {
