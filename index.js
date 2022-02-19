@@ -8,6 +8,7 @@ const helmet = require("helmet"); // Secure Express using HTTP headers
 const morgan = require("morgan"); // Logging middleware
 const nodemon = require("nodemon"); // Live / Hot reload
 
+const authRoute = require("./routes/auth"); // To use authentication
 const userRoute = require("./routes/user"); // To use users
 
 dotenv.config(); // We need this and .env file for secrets
@@ -30,6 +31,7 @@ app.use(helmet());
 app.use(morgan("common")); // "common" = Standard Apache common log output. There are many options for Morgan. Check out: https://expressjs.com/en/resources/middleware/morgan.html
 
 // REST API routes
+app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 
 /*
