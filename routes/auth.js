@@ -42,7 +42,7 @@ router.post("/register", async (req, res) => {
         const user = await newUser.save();
         res.status(200).json(user); // User created successfully.
     } catch (error) {
-        console.log(error);
+        res.status(500).json(error); // Internal Server Error
     }
 });
 
@@ -52,12 +52,16 @@ router.post("/login", async (req, res) => {
         const user = await User.findOne({email: req.body.email}); // findOne() because there is only one document with one email
         !user && res.status(404).json("User not found.");
 
+        // We must validate input because what if only email is sent but not password?
+        // The below function is await, so it will never resolve
+        // Note: Can an alternative option be a timeout?
         const validPassword = await bcrypt.compare(req.body.password, user.password);
-        !validPassword && res.status(401).json("Invalid password.");
+        !validPassword && res.status(401).json("Invalid password."); // 401 status code means Unauthorized
 
         res.status(200).json(user);
     } catch (error) {
-        console.log(error);
+        // Note: Implement custom error handling later.
+        res.status(500).json(error); // Internal Server Error
     }
 });
 

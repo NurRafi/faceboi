@@ -46,6 +46,23 @@ const UserSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
+    },
+    description: {
+        type: String,
+        max: 50
+    },
+    city: {
+        type: String,
+        max: 58 // Second longest city name is 58 characters long
+    },
+    country: {
+        type: String,
+        max: 56 // The United Kingdom of Great Britain and Northern Ireland
+    },
+    // Note: The better option would be to create an info model inside of User model.
+    relationship: {
+        type: Number,
+        enum: [1, 2, 3] // 1 means single, 2 means married, 3 means divorced
     }
 }, {timestamps: true}); // It's an option to add/update the timestamp when a user is created/updated
 
