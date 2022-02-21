@@ -6,10 +6,10 @@ const mongoose = require("mongoose"); // MongoDB models
 const dotenv = require("dotenv"); // Hide secrets
 const helmet = require("helmet"); // Secure Express using HTTP headers
 const morgan = require("morgan"); // Logging middleware
-const nodemon = require("nodemon"); // Live / Hot reload
 
 const authRoute = require("./routes/auth"); // To use authentication
 const userRoute = require("./routes/user"); // To use users
+const postRoute = require("./routes/posts"); // To use posts
 
 dotenv.config(); // We need this and .env file for secrets
 
@@ -34,6 +34,7 @@ app.use(morgan("common")); // "common" = Standard Apache common log output. Ther
 // REST API routes
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
+app.use("/api/post", postRoute);
 
 /*
 Building REST API so will use Routes instead of these.
